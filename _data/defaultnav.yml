@@ -1,0 +1,7 @@
+- name: Home
+  url: https://alanlai.me
+- name: Blog
+  url: /
+  selected: true
+- name: Projects
+  url: https://alanlai.me/projects

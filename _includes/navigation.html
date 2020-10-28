@@ -1,0 +1,8 @@
+
+{% assign defaultnav = site.data.defaultnav %}
+
+<nav class="my-2 my-md-0 mr-md-3">
+    {% for nav in defaultnav %}
+    <a class="p-2 {% if nav.selected %}selected{% endif %}" href="{{ nav.url | relative_url }}">{{ nav.name }}</a>                  
+    {% endfor %}
+</nav>
