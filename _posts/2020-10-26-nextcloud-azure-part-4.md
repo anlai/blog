@@ -40,21 +40,21 @@ Even though the logs aren't showing any new infromation, as long as your page is
 
 Eventually it'll chug along until you get this a 502 error.  Don't worry it's not broken, I'm not entirely sure what causes it, but judging by the error message the web server that is acting as a reverse proxy to your container didn't get a response and assumed something went wrong.  Note if you look at the container logs (or the log stream) you won't see any errors.
 
-![Startup 502 Error]({{ '/assets/images/posts/2020/10/nextcloud-appservicelinux/start-502error.png' | relative_url }})
+![Startup 502 Error]({{ '/assets/images/posts/2020/10/nextcloud-appservicelinux/start-502error.PNG' | relative_url }})
 
 Simply try to open the page up again in your browser and it should start to spin again.  Give it another minute or two and the setup page should show up.
 
-![Initial Setup Page]({{ '/assets/images/posts/2020/10/nextcloud-appservicelinux/setup-initialpage.png' | relative_url }})
+![Initial Setup Page]({{ '/assets/images/posts/2020/10/nextcloud-appservicelinux/setup-initialpage.PNG' | relative_url }})
 
 If you try to continue with SSL turned on the database server, you would see this error.  Luckily we've already turned it off so you shouldn't have to worry about it.  But if you do, go turn off SSL required on the database server.
 
-![SSL Error]({{ '/assets/images/posts/2020/10/nextcloud-appservicelinux/setup-dbsslerror.png' | relative_url }})
+![SSL Error]({{ '/assets/images/posts/2020/10/nextcloud-appservicelinux/setup-dbsslerror.PNG' | relative_url }})
 
 Go through the setup wizard by creating your administrative credentials, and setup the database connection to the Maria DB instance we spun up in part 2.  If you created it, make sure to use the throw away account.
 
 Once you finish the wizard you are going to see one more error.  The permissions where the NextCloud data is stored is too open for NextCloud.  Because we're using an App Service there isn't a whole lot you can do about folder permissions, but it's fine because the processes are isolated and you shouldn't really need to worry about permissions because no other apps are running on the App Service instance.
 
-![Setup Directory Permissions]({{ '/assets/images/posts/2020/10/nextcloud-appservicelinux/setup-directorypermissions.png' | relative_url }})
+![Setup Directory Permissions]({{ '/assets/images/posts/2020/10/nextcloud-appservicelinux/setup-directorypermissions.PNG' | relative_url }})
 
 In order to get around this we're going to have to modify the config.php file.  First thing we'll need to do is stop the App Service.  The final configuration will be in part 5.
 

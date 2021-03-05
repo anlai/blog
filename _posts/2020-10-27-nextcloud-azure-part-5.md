@@ -19,11 +19,11 @@ First we need to download the file so we can edit it.  If we were using the Stor
 
 We should have already set FTP to be SFTP only, but you can check in App Serivce > Configration > General Settings.  Should look like this screenshot.
 
-![Configure FTP]({{ '/assets/images/posts/2020/10/nextcloud-appservicelinux/setup-appservice-ftp.png' | relative_url }})
+![Configure FTP]({{ '/assets/images/posts/2020/10/nextcloud-appservicelinux/setup-appservice-ftp.PNG' | relative_url }})
 
 Next, navigate to App Service > Deploy Center (Preview) > FTP Section.  You'll need to grab 3 pieces of information: FTPS Endpoint, Username, and Password.
 
-![FTP Credentials]({{ '/assets/images/posts/2020/10/nextcloud-appservicelinux/setup-appservice-ftp-credentials.png' | relative_url }})
+![FTP Credentials]({{ '/assets/images/posts/2020/10/nextcloud-appservicelinux/setup-appservice-ftp-credentials.PNG' | relative_url }})
 
 Take those and use an SFTP client like FileZilla to connect.  Here you'll be downloading the config.php file that is in the root of your NextCloud install.  File should be located in `/site/nextcloud/config/config.php`, relative to the home directory.
 
