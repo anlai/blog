@@ -54,8 +54,11 @@ Set-Variable -name appId -Value (az ad app list --filter "displayName eq '$name'
 
 if ($appId -eq $null)
 {
+    Set-Variable -name replyfqdn -value "$fqdn$authEndpoint"
+    Set-Variable -name replyazfqdn -value "$azfqdn$authEndpoint"
+
     # create the app reg and get back the new appId
-    Set-Variable -name appId -Value (az ad app create --display-name $name --reply-urls $fqdnUri$authEndpoint $azfqdnUri$authEndpoint --optional-claims manifest.json --query "appId")
+    Set-Variable -name appId -Value (az ad app create --display-name $name --reply-urls $replyfqdn $replyazfqdn --optional-claims manifest.json --query "appId")
 
     Write-Host "App Reg created $name ($appId)"
 }
@@ -69,12 +72,13 @@ Set-Variable -Name secretResult -Value (az ad app credential reset --id $appId -
 Set-Variable -Name secret -Value ( $secretResult | ConvertFrom-Json )
 Set-Variable -Name tenant -Value $secret.tenant
 Set-Variable -Name password -Value $secret.password
+Set-Variable -Name issuer -Value "https://sts.windows.net/$tenant/v2.0"
 
 Write-Host ""
 Write-Host "========================================"
 Write-Host "App Id: $appId"
 Write-Host "Secret: $password"
-Write-Host "Auth: https://sts.windows.net/$tenant/v2.0"
+Write-Host "Auth: $issuer"
 Write-Host "========================================"
 Write-Host ""
 ```
@@ -88,7 +92,8 @@ Assuming the variables defined above, this script will setup the authentication.
 ```powershell
 Set-Variable -Name subscription -Value ""  # subscription id of app service
 Set-Variable -Name rg -Value ""  # resource group name of app service
-Set-Variable -Name issuer -Value "https://sts.windows.net/$tenant/v2.0"
+
+az account set --subscription $subscription
 
 az webapp auth update -g $rg -n $name --enabled true --action LoginWithAzureActiveDirectory --aad-client-id $appId --aad-client-secret $password --aad-token-issuer-url $issuer --subscription $subscription
 ```
