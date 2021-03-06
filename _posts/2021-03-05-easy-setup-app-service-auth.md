@@ -46,7 +46,7 @@ Set-Variable -name name -value "name"   # Name of the app
 Set-Variable -name dns -Value "dnsroot" # Subdomain for the app
 Set-Variable -name domain -Value "domain"   # Domain for the app
 Set-Variable -name fqdn -Value "https://$dns.$domain.com"   # Custom DNS for app
-Set-Variable -name azfqdn -Value "https://$name-$domain.azurewebsites.net"  # Default generated DNS for an app service
+Set-Variable -name azfqdn -Value "https://$name.azurewebsites.net"  # Default generated DNS for an app service
 Set-Variable -name authEndpoint -Value "/.auth/login/aad/callback"  # App Service AAD auth endpoint
 
 # Check to see if an app reg exists
