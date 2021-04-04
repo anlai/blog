@@ -98,9 +98,10 @@ alias commit='git commit -v'
 alias branch='git checkout -b'
 ```
 
-Last thing to add to `~/.bashrc` is to enable entering passphrase once a session (instead of each git action).
+Last thing to add to `~/.bashrc` is to enable entering passphrase once a session (instead of each git action).  I never remember the command and always end up looking for it.  But this will just prompt you for the passphrase at the start of the session, and all subsequent git calls won't require the passphrase.
 
 ```
-exec ssh-agent bash
-ssh-add
+eval `ssh-agent -s`
+ssh-add ~/.ssh/*_rsa
 ```
+[source](https://superuser.com/a/1044918)
