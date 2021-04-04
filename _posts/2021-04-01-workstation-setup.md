@@ -5,41 +5,39 @@ date: 2021-04-01
 categories: windows linux wsl vscode git
 ---
 
-Lately I've been finding myself having to setup computers for doing my development work.  I hate having to do the same setup steps over and over manually, but what I hate even more is having to look up the same instructions from all these different sources all the time.
+Apparently it's been a while since I've rebuilt my workstations and things have changed quite a bit with the introduction of WSL.  As far as I knew the only way to cleanly isolate different dev environments was to use virtual machines which I never really care for on a laptop.  As I'm finding a lot more of my stuff works on Linux seems to make sense to take advantage of WSL containers.
 
-I'm sure I'll eventually get things a little more scripted, but this post will just look up getting my workstation setup with some of the shortcuts and what not listed out.  What I decided recently was to start breaking down my dev environments into WSL containers (for Linux capable workloads) all Windows based like .NET dev just stay in the primary isntall of Windows.  I've also moved away from installing local isntances of database engines in favor of just cloud hosting those pieces where needed.
+General idea is that I'd setup my standard Windows tools/environments like normal, but anything that can be offloaded into Linux will be put into it's own container.  With the seamless integration of VSCode and WSL it makes it super easy.
 
-These are the tools that I install (and some utilities)
+## Windows Setup
+
+There are more tools that I generally use, but this setup is the bare minimum and what I use to get WSL setup.
+
+Tools:
 - Chocolatey
 - Git
 - VS Code
 - 7zip
 - Microsoft Windows Terminal
-- Jekyll
-
-## Windows Setup
-
-The Windows setup is relatively straight forward I try to get the bare minimum in here.
 
 1. Install Chocolatey [install page](https://chocolatey.org/install)
 2. Open administrative Powershell (close this window when done with this step)
 ```Powershell
 choco install vscode git 7zip microsoft-windows-terminal
 ```
-3. Generate an ssh public/private key (make sure to put a passphrase)
+3. Generate an ssh public/private key
 ```Powershell
 ssh-keygen -t rsa
 ```
+4. Turn on WSL, follow [these instructions](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
 
-## WSL Setup
+## Setup First WSL Container
 
-Setup WSL2, follow [these instructions](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
+Now that you've got WSL turned on, it's time to setup your first WSL container instance.  Microsoft recommends installing it by using the Microsoft Store, which is simple enough but really only lets you install one instance of each distro.  Since I plan to have multiple versions of a distro for different environments, I download the image and create a new instance for each environment.
 
-Once you have WSL2 installed and setup, we want to set it up so that it'll be easy to spin up new WSL containers whenever you need a fresh instance.  The default method for doing it is by using the Microsoft Store and install the distro you want, that's great and easy but it doesn't make it easy to get fresh clean containers whenever you want a new one.  There are instructions out there to export and import your existing container but that just makes a copy.
+You are welcome to download and use whichever distro makes you happy, I'll be using Ubuntu 20.04 so that's what the file names in the scripts below will use.  Start by downloading the image(s) that you want from [this Microsoft site](https://docs.microsoft.com/en-us/windows/wsl/install-manual), files should be downloaded as an appx file type.
 
-Instead of using the Microsoft Store, I prefer to use the manual download option and download the distros you want to use.  [Here is the list of download links](https://docs.microsoft.com/en-us/windows/wsl/install-manual).  Download the one(s) you want to use.
-
-The following script assumes you download Ubuntu 20.04 to the downloads folder and will be creating a WSL container called "jekyll".
+The following script will setup my preferred folder structure for wsl, and extract the image, and create a WSL container instance.  Open up a Powershell window (and be sure to replace `jekyll` with the desired name for your environment):
 
 ```Powershell
 mkdir c:\wsl
@@ -50,7 +48,9 @@ mkdir c:\wsl\images
 wsl --import jekyll c:\wsl\data\jekyll c:\wsl\images\ubuntu_2004\install.tar.gz
 ```
 
-Next step is to open up a bash shell to the new container (I prefer Windows Terminal).  We just have a few things to do to configure the WSL container: get access to Windows file system and share the ssh key.
+Now that we've got a container instance setup, just a final configuration to make life a little easier (not necessarily required).
+
+Drop the following contents into `/etc/wsl.conf`.  It will give you write access to the Windows file system (ordinarily I believe it's read only).
 
 /etc/wsl.conf [source](https://docs.microsoft.com/en-us/windows/wsl/wsl-config)
 ```
@@ -66,7 +66,10 @@ mountFsTab = false
 generateHosts = true
 generateResolvConf = true
 ```
-Restart the container in powershell window execute `wsl -t jekyll`.  Then go back into the container and get the ssh key moved so you can use it.
+
+Restart the container in powershell window execute `wsl -t jekyll`.  
+
+Final step after you have terminated the instance is to go back in, and move your ssh key from Windows into the Linux container so you have the same one.  It's also possible to just generate another key for each container if you want.
 
 ```bash
 cp /windir/c/users/{username}/.ssh ~/.ssh -r
@@ -75,7 +78,7 @@ chmod 644 ~/.ssh/id_rsa.pub
 chmod 600 ~/.ssh/id_rsa
 ```
 
-Finally the last step for you is to setup whatever development environment you need in those containers.  If you need to restart from scratch you just need to run `wsl --unregister jekyll` then run the setup all over for the container.
+Now you are all set to start installing specific tools for your environment, for me it's installing Jekyll into this particular container.
 
 ## Git Shortcuts
 
