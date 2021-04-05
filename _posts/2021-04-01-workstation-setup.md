@@ -87,14 +87,14 @@ I personally prefer to do a lot of my git actions in the command-line and not th
 Add the following lines to `~/.bashrc`
 
 ```
-alias ac='git add . && git commit -v'
+alias ac='git add . && git commit -m'
 alias status='git status'
 alias pull='git pull'
 alias push='git push'
 alias clone='git clone'
 alias checkout='git checkout'
 alias add='git add'
-alias commit='git commit -v'
+alias commit='git commit -m'
 alias branch='git checkout -b'
 ```
 
