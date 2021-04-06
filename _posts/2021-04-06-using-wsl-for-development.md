@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Using WSL for Development
-date: 2021-04-01
+date: 2021-04-06
 categories: windows linux wsl vscode git
 ---
 
