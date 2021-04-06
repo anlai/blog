@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ $# -ne 1 ]; then
+  echo 1>&2 "Usage: $0 WINDOWS_USERNAME"
+  exit 3
+fi
+
 echo '# Enable extra metadata options by default' >> /etc/wsl.conf
 echo '[automount]' >> /etc/wsl.conf
 echo 'enabled = true' >> /etc/wsl.conf
@@ -27,7 +32,7 @@ echo "alias add='git add'" >> ~/.bashrc
 echo "alias commit='git commit -m'" >> ~/.bashrc
 echo "alias branch='git checkout -b'" >> ~/.bashrc
 
-echo "" >> ~/bashrc
+echo "" >> ~/.bashrc
 
 echo "eval `ssh-agent -s`" >> ~/.bashrc
 echo "ssh-add ~/.ssh/*_rsa" >> ~/.bashrc
