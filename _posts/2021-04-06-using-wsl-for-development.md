@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Workstation Setup
+title: Using WSL for Development
 date: 2021-04-01
 categories: windows linux wsl vscode git
 ---
