@@ -1,6 +1,7 @@
 #!/bin/bash
 
-if [ $# -ne 3 ] && [ $# -ne 4]; then
+if [ $# -ne 3 ] && [ $# -ne 4 ] 
+then
   echo 1>&2 "Usage: $0 WINDOWS_USERNAME NAME EMAIL STARTUP_PATH(optional)"
   exit 3
 fi
