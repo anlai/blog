@@ -20,3 +20,8 @@ plugins:
   - jekyll-feed
   
 theme: jekyll-theme-cayman
+
+exclude:
+  [
+    _scripts
+  ]
