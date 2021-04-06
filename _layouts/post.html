@@ -1,5 +1,6 @@
 ---
 layout: default
+comments: true
 ---
 
 <div class="header-half-spacer">
@@ -33,3 +34,7 @@ layout: default
     <a class="next" href="{{ page.next.url | relative_url }}">{{page.next.title}} &raquo;</a>
     {% endif %}
 </div>
+
+{% if page.comments == true %}
+  {% include comments.html %}
+{% endif %}
