@@ -1,6 +1,5 @@
 ---
 layout: default
-comments: true
 ---
 
 <div class="header-half-spacer">
@@ -35,6 +34,6 @@ comments: true
     {% endif %}
 </div>
 
-{% if page.comments == true %}
-  {% include comments.html %}
-{% endif %}
+<div class="container">
+{% include comments.html %}
+</div>
