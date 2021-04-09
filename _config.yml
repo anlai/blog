@@ -18,7 +18,10 @@ social:
 # Build settings
 plugins:
   - jekyll-feed
-  
+
+sass:
+  sass_dir: assets/css
+
 theme: jekyll-theme-cayman
 
 exclude:
@@ -34,3 +37,7 @@ exclude:
 #  ${bridge_app_name}: the name you chose in Heroku for your bridge API
 #  comments: the so-called property, this defines the key in staticman.yml where the configuration is found
 staticman_url: https://staticman-alanlaime.azurewebsites.net/v2/entry/anlai/blog/master/comments
+
+reCaptcha:
+  siteKey: 6LfPoJ8aAAAAAN_H2IQaDzxYuMKGl5RIHTjYMw9P
+  secret: F8LXECJ5VKJUP7V4wMo85hm1zwXivwXxV8FVosfAzUstUW3RhySlxWr+AXp3kEgaISJzw2h9OmPxCOJlmm09NOoiYVHOJR8Xj7T+x4lwGH3t5dc2dhlsnlL1cwmXvmu+sX2A37AqLhf8X/KDDVhgxpX+Qp4oBYHUOkkgNjmViHv3Ltv5f+areL+XjSXM1jqgia9GPepm6L8J3nFv1ODCjIy0KwmXUPDkvrQh37xEcTzQRlYnFYY6txIMGoMlmnjXSlB2mlDFCC3WffaEmSt5DsAk2VKt09a6BScww5vnvpewOK8p12NGIQHhEK3HYgi52QPG4xesHVFgnw3bkHaVh+KS8+OKhHtVXb9mn/yu8OUag8O5pQc6JyXRxe4zNvSf8zjAisV2apypN+OiITuuCiEXQd7fRst9Yqvh+LGuMSA8DE7DeL925JmDN46TFgcFEl9fRFHG9gCQu6jsY+uCpfwUPgn1LyzYKVzvuwfdoacFKU6a3b2z20wvdZDeEyZlpad7rxq/08rhgLY/cgKW+irL4/30N/jkg24Zjce+ztx3REt55bm/rXqb9X1OARo89Bhq8+nQNoC/qyiZnO2nsuyFMvyADh8+Bs06o1EY34aCUab4mTTRkixrjsUpxEMNhBOmChMxdK3X8SEnp79COyXm1wwLc30uBHlsxdwNZew=
