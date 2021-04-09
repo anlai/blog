@@ -36,7 +36,7 @@ exclude:
 #  master: this the branch out of which your blog is published, often master or gh-pages
 #  ${bridge_app_name}: the name you chose in Heroku for your bridge API
 #  comments: the so-called property, this defines the key in staticman.yml where the configuration is found
-staticman_url: https://staticman-alanlaime.azurewebsites.net/v2/entry/anlai/blog/master/comments
+staticman_url: https://staticman-alanlaime.azurewebsites.net/v2/entry/anlai/blog/main/comments
 
 reCaptcha:
   siteKey: 6LfPoJ8aAAAAAN_H2IQaDzxYuMKGl5RIHTjYMw9P
