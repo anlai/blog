@@ -44,7 +44,7 @@ mkdir c:\wsl
 mkdir c:\wsl\data
 mkdir c:\wsl\images
 
-7z e ~/downloads/Ubuntu_2004.2020.424.0_x64.appx -o c:\wsl\images\ubuntu_2004
+7z e ~/downloads/Ubuntu_2004.2020.424.0_x64.appx -oc:\wsl\images\ubuntu_2004
 wsl --import jekyll c:\wsl\data\jekyll c:\wsl\images\ubuntu_2004\install.tar.gz
 ```
 
