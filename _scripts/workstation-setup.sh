@@ -43,7 +43,7 @@ echo "" >> ~/.bashrc
 
 echo ""
 echo "Writing ssh cred setup'"
-echo "eval `ssh-agent -s`" >> ~/.bashrc
+echo 'eval `ssh-agent -s`' >> ~/.bashrc
 echo "ssh-add ~/.ssh/*_rsa" >> ~/.bashrc
 
 echo ""
