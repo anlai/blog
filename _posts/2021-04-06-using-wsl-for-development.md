@@ -112,7 +112,7 @@ Now that you've gotten this far, I got the lazy way to set this up.  The script 
 From the container, execute the following command.  It will download the script and execute the above stuff.
 
 ```bash
-curl -s https://raw.githubusercontent.com/anlai/blog/draft/_scripts/workstation-setup.sh | bash -s {WINDOWS_USERNAME} {GIT NAME} {GIT EMAIL} {STARTUP PATH (OPTIONAL)}
+curl -s https://raw.githubusercontent.com/anlai/blog/main/_scripts/workstation-setup.sh | bash -s {WINDOWS_USERNAME} {GIT NAME} {GIT EMAIL} {STARTUP PATH (OPTIONAL)}
 ```
 
-The script can be found here in the repository for this blog. [source](https://github.com/anlai/blog/blob/draft/_scripts/workstation-setup.sh)
+The script can be found here in the repository for this blog. [source](https://github.com/anlai/blog/blob/main/_scripts/workstation-setup.sh)
