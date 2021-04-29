@@ -13,3 +13,11 @@ Just replace `{username}` with your Github username and run the comands.
 curl https://api.github.com/users/{username}/keys | grep '"key"' | sed 's/^.*\(ssh-rsa .*\)\"$/\1/' >> ~/.ssh/authorized_keys
 chmod 0600 ~/.ssh/authorized_keys
 ```
+
+EDIT: A somewhat easier way
+
+```bash
+curl -s https://raw.githubusercontent.com/anlai/blog/main/_scripts/set-ssh-github.sh | bash -s {GITHUB_USERNAME}
+```
+
+The script can be found here in the repository for this blog. [source](https://github.com/anlai/blog/blob/main/_scripts/set-ssh-github.sh)
