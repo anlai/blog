@@ -12,7 +12,7 @@ then
 fi
 
 # download the ssh keys
-curl https://api.github.com/users/$1/keys | grep '"key"' | sed 's/^.*\(ssh-rsa .*\)\"$/\1/' >> ~/.ssh/authorized_keys_tmp
+curl https://api.github.com/users/$1/keys | grep '"key"' | sed -E 's/^[[:space:]]*"key": "(.*)",?/\1/' >> ~/.ssh/authorized_keys_tmp
 
 # if file has contents, then replace the authorized keys file
 if [ -s ~/.ssh/authorized_keys_tmp ]
